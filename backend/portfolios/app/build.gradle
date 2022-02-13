@@ -32,6 +32,8 @@ dependencies {
 
     implementation 'io.dropwizard:dropwizard-core:2.0.28'
     implementation 'io.dropwizard:dropwizard-jdbi3:2.0.28'
+    implementation 'com.h2database:h2:2.1.210'
+
 }
 
 compileKotlin {

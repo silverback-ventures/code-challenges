@@ -12,7 +12,7 @@ class AppConfig: Configuration() {
     @Valid
     var appName: String? = null
 
-//    @Valid
-//    @NotNull
-//    var database = DataSourceFactory()
+    @Valid
+    @NotNull
+    var database = DataSourceFactory()
 }
