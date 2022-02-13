@@ -1,4 +1,4 @@
-# Portfolios Challenge
+# Portfolios API
 
 ## Intro
 
@@ -86,6 +86,8 @@ would return the portfolio representation only with BTC and ETH assets, with the
 ## Optional
 
 Note: this are, like the title say, optional stuff you may include in your solution. You can pick as many or as little as you want.
+
+- there's a single test that asserts true == true, consider adding more test for the functionality you just implemented.
 
 - there's a `portfolios.services.Db` that has a working in-memory h2 database, make that part of your solution.
 
