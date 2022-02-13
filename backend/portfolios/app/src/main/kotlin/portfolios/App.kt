@@ -30,7 +30,7 @@ class App: Application<AppConfig>() {
 
         // register jersey resources
         environment.jersey().register(SampleResource())
-        
+
         logger.info("application ${configuration.appName} running")
     }
 }
