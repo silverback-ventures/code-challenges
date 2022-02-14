@@ -84,7 +84,7 @@ You may pick the number of `shares` you want but you should use the real USD val
 Add an optional way to filter resources from your portfolio representation, for example:
 
 ```bash
-curl localhost:8080/my_portfolios_resource?assets=BTC, ETH
+curl localhost:8080/my_portfolios_resource?assets=BTC,ETH
 ```
 
 would return the portfolio representation only with BTC and ETH assets, with the right `total_value` (BTC and ETH `shares * valuation`) and `percentages` (they must add up to 100)
