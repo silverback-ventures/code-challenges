@@ -2,9 +2,9 @@
 
 ## Intro
 
-Working with investments means keeping a bunch of assets and their price in sync, we want to be as close to realtime as possible.
+Working with investments means keeping a bunch of assets and their prices in sync.
 
-You'll be building an application that keeps track of user assets in a single unit called a _Portfolio_. The price of those assets fluctuate often and you'll need to keep track of it.
+You'll be building an application that keeps track of user assets in a single unit called a _Portfolio_. The price of those assets fluctuate often and you'll need to keep track of it. We want to be as accurate as possible.
 
 ## Challenge
 
@@ -19,6 +19,12 @@ gradle wrapper
 ```
 
 On the root folder. This will create the `gradlew` executable.
+
+Run the tests by doing:
+
+```bash
+./gradlew test
+```
 
 Run the app by doing:
 
@@ -36,14 +42,14 @@ It should return `{"say":"Hello","who":"World"}`
 
 ### An API for Portfolios
 
-You need to create a new http resource with a sensible name that returns the contents and proportions of the single portfolio (the suggested quantities are on the `portfolio.datalayer.Portfolio` but feel free to change them if you want)
+You need to create a new http resource with a sensible path and verb that returns the contents and proportions of the single portfolio (the suggested quantities are on the `portfolio.datalayer.Portfolio` but feel free to change them if you want)
 
 Granted those asset shares you'll need to fetch the asset values and return a json representation with shares, valuation and proportions in percentages, for example:
 
 ```json
 [{
     "name": "My Portfolio",
-    "total_value": 1000,
+    "total_value": <sum of all asset shares * valuation>
     "assets": [
         {
             "symbol": "BTC",
@@ -59,7 +65,7 @@ Note that:
 
 - `shares`, `valuation` and `total_value` must be precise to the 8th decimal place and may be large numbers
 
-- `percentage`s should add up to 100%
+- `percentage`s should be integers (no fractional part) and always add up to 100
 
 - the sum of `shares * valuation` must add up to `total_value`
 
@@ -85,24 +91,24 @@ would return the portfolio representation only with BTC and ETH assets, with the
 
 ## Optional
 
-Note: this are, like the title say, optional stuff you may include in your solution. You can pick as many or as little as you want.
+These are, like the title say, optional points you _may_ include in your solution. You can pick as many or as little as you want.
 
-- there's a single test that asserts true == true, consider adding more test for the functionality you just implemented.
+- There's a single test that asserts true == true, consider adding more test for the functionality you just implemented.
 
-- there's a `portfolios.services.Db` that has a working in-memory h2 database, make that part of your solution.
+- There's a `portfolios.services.Db` that has a working in-memory h2 database, make that part of your solution.
 
-- consider using both BTC APIs, keeping one as fallback when the first fails. Can you think of a way to test this (causing the first api call to fail?)
+- Consider using both BTC APIs, keeping one as fallback when the first fails. Can you think of a way to test this (causing the first api call to fail?)
 
-- suppose the application is read-heavy, how would you optimize it for very fast GET requests?
+- Suppose the application is read-heavy, how would you optimize it for very fast GET requests?
 
-- suppose the application is write-heavy, meaning the shares of the portfolio get updated often, how would you handle this? (assume IO is the bottleneck)
+- Suppose the application is write-heavy, meaning the shares of the portfolio get updated often, how would you handle this? (assume IO is the bottleneck)
 
 - Consider having a “model” for the portfolio (an ideal map of assets and percentages) and have the API return a metric of how off the portfolio is from ideal.
 
 ### Optional, design-only
 
-These are questions just to think about and maybe discuss in the following interview, no need to add code to your project
+These are questions just to think about and maybe discuss in the following interview, no need to add code to your project (but feel free to do so if you think it will make it easier for making your point)
 
-- Based on the previous "model", consider how you would implement a balancing strategy for the portfolio, meaning if the portfolio needs to have 60% ETH and 40% BTC in value, but because of market fluctuations it’s 50-50, how you would bring it back to the desired values.
+- Based on the previous "model", consider how you would implement a balancing strategy for the portfolio, meaning if the portfolio needs to have 60% ETH and 40% BTC in value, but because of market fluctuations it’s 50-50, how you would bring it back to the desired values?
 
-- What problems do you think may arise if this application is deployed with redundancy in production (multiple instances running)
+- What problems do you think may arise if this application is deployed with redundancy in production (multiple instances running)?
