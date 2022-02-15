@@ -1,4 +1,4 @@
-# Donations UI
+# Charity Search
 
 ## Intro
 
